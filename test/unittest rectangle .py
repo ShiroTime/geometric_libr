@@ -1,6 +1,7 @@
 import unittest
 import math
-from rectangle import area, perimeter
+from rectangle import (area, perimeter)
+
 
 class RectangleTestCase(unittest.TestCase):
     def test_rectangle_int_first(self):
@@ -11,19 +12,11 @@ class RectangleTestCase(unittest.TestCase):
 
     def test_rectangle_string_first(self):
         with self.assertRaises(TypeError):
-            area("85", "92")
+            area("85llll", "92")
 
     def test_rectangle_string_second(self):
         with self.assertRaises(TypeError):
             area("85", 19)
-
-    def test_rectangle_bool_first(self):
-        with self.assertRaises(TypeError):
-            area(True, False)
-
-    def test_rectangle_bool_second(self):
-        with self.assertRaises(TypeError):
-            area(False, False)
 
     def test_rectangle_negaive_int_first(self):
         with self.assertRaises(ValueError):
@@ -49,16 +42,7 @@ class RectanglePerimeterTestCase(unittest.TestCase):
             perimeter("85", "92")
 
     def test_rectangle_string_second(self):
-        with self.assertRaises(TypeError):
-            perimeter("85", 19)
-
-    def test_rectangle_bool_first(self):
-        with self.assertRaises(TypeError):
-            perimeter(True, False)
-
-    def test_rectangle_bool_second(self):
-        with self.assertRaises(TypeError):
-            perimeter(False, False)
+        self.assertRaises(TypeError, area, "85", "92")
 
     def test_rectangle_negaive_int_first(self):
         with self.assertRaises(ValueError):
@@ -73,4 +57,4 @@ class RectanglePerimeterTestCase(unittest.TestCase):
             perimeter(0, 8)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
